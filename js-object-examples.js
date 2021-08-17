@@ -19,3 +19,8 @@ console.log("My info as an object:  ", myInfo);
 console.log("my info printed as a json string format");
 const myInfoAsJSON = JSON.stringify(myInfo);
 console.log(myInfoAsJSON);
+
+function sayHi(name, color) {
+    return `hi I'm ${name} and my favorite color is ${color}`;
+}
+console.log(sayHi("Maria", "green"));

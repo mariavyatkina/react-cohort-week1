@@ -1,3 +1,17 @@
+var getSliceSize = function (sliceSize) {
+    if (sliceSize === "small") {
+        return drawSmallPizzaSlice();
+    }
+    else if (sliceSize === "medium") {
+        return drawMediumPizzaSlice();
+    }
+    else if (sliceSize === "large") {
+        return drawLargePizzaSlice();
+    }
+    else {
+        throw new Error("Wrong input. Unable to draw a slice");
+    }
+};
 /**
  * Draws a length 1 width 1 pizza slice
  * Length 1 width 1:
@@ -60,20 +74,32 @@ function drawLargePizzaSlice() {
   ​
  */
 function drawAnyPizzaSlice(sliceSize) {
-    if (sliceSize === "small") {
-        return drawSmallPizzaSlice();
+    return getSliceSize(sliceSize);
+}
+function drawAnyPizzaSlice2(width, length) {
+    var slice = " ";
+    for (var i = 0; i < width; i++) {
+        slice += "-";
     }
-    else if (sliceSize === "medium") {
-        return drawMediumPizzaSlice();
+    slice += "\n";
+    // space variable represents a line in a 
+    //piece of pizza that look like "|   |"
+    // bottom variable represent the crust
+    var space = "|", bottom = "|";
+    for (var i = 0; i < width; i++) {
+        space += " ";
+        bottom += "_";
     }
-    else if (sliceSize === "large") {
-        return drawLargePizzaSlice();
+    space += "|";
+    bottom += "|";
+    for (var i = 0; i < length - 1; i++) {
+        slice += space + "\n";
     }
-    else {
-        return "Wrong input. Unable to draw a slice";
-    }
+    slice += bottom;
+    return slice;
 }
 // console.log(drawSmallPizzaSlice());
 // console.log(drawMediumPizzaSlice());
 // console.log(drawLargePizzaSlice());
-console.log(drawAnyPizzaSlice("largew"));
+console.log(drawAnyPizzaSlice("large"));
+console.log(drawAnyPizzaSlice2(5, 6));
